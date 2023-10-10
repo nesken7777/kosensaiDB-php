@@ -1,5 +1,6 @@
 
 <?php
+// score 1~5位までの名前、スコアを表示
 $dsn = 'mysql:dbname=game;host=localhost;port=3306;charset=utf8';
 $user='uk';
 $password='1234';
