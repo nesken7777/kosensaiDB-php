@@ -1,5 +1,5 @@
 <?php
-$dsn = 'mysql:dbname=game;host=localhost;port=1234;charset=utf8';
+$dsn = 'mysql:dbname=game;host=localhost;port=3306;charset=utf8';
 $user='uk';
 $password='1234';
 
