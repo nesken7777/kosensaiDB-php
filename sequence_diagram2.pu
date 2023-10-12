@@ -1,0 +1,27 @@
+@startuml
+skinparam Shadowing false
+
+
+actor 客 as client
+participant ICカード as ic
+participant GNCT as gnct
+participant 迷宮 as lost
+participant "出口" as exit
+database Web兼DB as db 
+
+ic->gnct:9.user_idを通知
+gnct->db:10.read.phpによる通知されたuser_idのステータス要求
+db->gnct:11.ステータスを通知
+gnct->db:12.update.phpによるscore1の更新
+ic->lost:9.user_idを通知
+lost->db:10.read.phpによる通知されたuser_idのステータス要求
+db->lost:11.ステータスを通知
+lost->db:12.update.phpによるscore2の更新
+exit->db:score.phpによるランキング取得(5秒おきにループ)
+db->exit:1~5位までのスコアと名前を通知
+
+
+
+
+
+@enduml

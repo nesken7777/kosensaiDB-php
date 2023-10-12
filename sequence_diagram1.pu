@@ -1,0 +1,26 @@
+@startuml
+skinparam Shadowing false
+
+
+actor 客 as client
+participant "入口(改札)" as ent
+participant ICカード as ic 
+participant パンチングマシーン as panti
+participant 射的 as shot
+participant スロット as slot
+
+database Web兼DB as db 
+
+client->ent : 1.icカードをかざす
+ent->db: 2.name_insert.phpによる新規user_idの作成
+db->ent:3.新規user_idを付与
+ent->ic:4.新規user_idの書き込み
+ic->panti:5.user_idを通知
+panti->db:6.update.phpによるpowerの更新
+ic->shot:7.user_idを通知
+shot->db:8.update.phpによるspeed,staminaの更新
+ic->panti:7.user_idを通知
+panti->db:8.update.phpによるspeed,staminaの更新
+
+
+@enduml
