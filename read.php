@@ -7,7 +7,7 @@ $password='1234';
 class Json {
     public $id;
     public $power;
-    public $luck;
+    public $syateki_score;
     public $stamina;
     public $score1;
     public $score2;
@@ -15,14 +15,14 @@ class Json {
     public $name;
 
 
-    function __construct($id,$score1,$score2,$speed,$stamina,$luck,$power,$name) {
+    function __construct($id,$score1,$score2,$speed,$stamina,$syateki_score,$power,$name) {
         $this->id = $id;
         $this->power = $power;
         $this->stamina = $stamina;
         $this->score1 = $score1;
         $this->score2 = $score2;
         $this->speed = $speed;
-        $this->luck = $luck;
+        $this->syateki_score = $syateki_score;
         $this -> name=$name;
     }
 }
@@ -45,7 +45,7 @@ try{
                 $data['score2'],
                 $data['speed'],
                 $data['stamina'],
-                $data['luck'],
+                $data['syateki_score'],
                 $data['power'],
                 $data['name']
             );
