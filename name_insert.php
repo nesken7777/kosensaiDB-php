@@ -1,52 +1,30 @@
 <?php
-$dsn = 'mysql:dbname=game;host=localhost;port=3306;charset=utf8';
+$dsn = 'mysql:dbname=game;host=localhost;port=1234;charset=utf8';
 $user='uk';
 $password='1234';
 
-
-
-class Json {
-    public $id;
-    function __construct($id) {
-
-        $this->id=$id;
-    }
-}
 try{
-    $name=$_GET['name'];
-
+    $name=urldecode($_GET['name']);
+    $idm=$_GET["idm"];
     
     $dbh = new PDO($dsn,$user,$password);
 
     // SQL文をセット
-    $stmt = $dbh->prepare('INSERT INTO status (power,score1 , score2, speed,stamina,luck,name) VALUES(:power,:score1 , :score2, :speed,:stamina,:luck,:name)');
- 
+    $stmt = $dbh->prepare('INSERT INTO status (power,score1 , score2, speed,stamina,syateki_score,syateki_stage,name,idm,exist) 
+    VALUES(:power,:score1 , :score2, :speed,:stamina,:syateki_score,:syateki_stage,:name,:idm,:exist)');
+    
     // 値をセット
     $stmt->bindValue(':power', 0);
     $stmt->bindValue(':score1', 0);
     $stmt->bindValue(':score2', 0);
     $stmt->bindValue(':speed', 0);
     $stmt->bindValue(':stamina', 0);
-    $stmt->bindValue(':luck', 0);
+    $stmt->bindValue(':syateki_score', 0);
+    $stmt->bindValue(':syateki_stage', 0);
     $stmt->bindValue(':name', $name);
-
- 
-    // SQL実行
+    $stmt->bindValue(':idm', $idm);
+    $stmt->bindValue(':exist', 1);
     $stmt->execute();
-    $stmt = $dbh->prepare("SELECT  id
-    FROM status
-    ORDER BY id DESC
-    limit 0,1
-    ;");
-
-    $stmt->execute();
-    $all = $stmt->fetchAll();
-    foreach ($all as $data)
-    {
-
-        $id=$data["id"];
-    
-    }
 }catch (PDOException $e){
     print('Error:'.$e->getMessage());
     die();
