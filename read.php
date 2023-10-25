@@ -29,11 +29,11 @@ class Json {
 
 
 try{
-    $id=$_GET['id'];
+    $idm=$_GET['idm'];
     $dbh = new PDO($dsn,$user,$password);
     $sql = 
-    $dbh->prepare('select * from status where id = ?');
-    $sql->bindValue(1,$id);
+    $dbh->prepare('select * from status where idm = ? AND exist=1');
+    $sql->bindValue(1,$idm);
     $sql->execute();
     $all = $sql->fetchAll();
         foreach ($all as $data)

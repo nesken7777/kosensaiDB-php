@@ -1,0 +1,66 @@
+
+@startuml allow_mixing
+top to bottom direction
+skinparam backgroundColor transparent
+skinparam componentStyle rectangle
+skinparam nodesep 10
+skinparam ranksep 100 
+skinparam ArrowThickness 3
+skinparam ArrowColor Chocolate
+skinparam node {
+  BackgroundColor LemonChiffon
+}
+skinparam rectangle {
+  BackgroundColor PeachPuff
+}
+skinparam interface {
+  FontStyle bold
+}
+
+' nodes
+node ルータ {
+  rectangle e0 as router0_e0
+}
+node ハブ {
+  rectangle e0 as hub_e0
+  rectangle e1 as hub_e1
+  rectangle e2 as hub_e2
+  rectangle e3 as hub_e3
+  rectangle e4 as hub_e4
+  rectangle e5 as hub_e5
+  rectangle e6 as hub_e6
+}
+
+node PC(データベース+Webサーバー) {
+  rectangle e0 as db_e0
+}
+
+node 射的 {
+  rectangle e0 as syateki_e0
+}
+node パンチング {
+  rectangle e0 as panti_e0
+}
+node スロット {
+  rectangle e0 as slot_e0
+
+}
+node クエスト {
+  rectangle e0 as gnct_e0
+}
+node 迷宮 {
+  rectangle e0 as meikyu_e0
+
+}
+router0_e0--hub_e0
+db_e0--hub_e1
+syateki_e0-hub_e5
+panti_e0-hub_e3
+slot_e0-hub_e2
+hub_e4--gnct_e0
+hub_e6--meikyu_e0
+hub_e3 -[hidden]- panti_e0
+hub_e3 -[hidden]- slot_e0
+syateki_e0-[hidden]-hub_e2
+
+@enduml
