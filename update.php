@@ -1,6 +1,6 @@
 
 <?php
-$dsn = 'mysql:dbname=game;host=localhost;port=3306;charset=utf8';
+$dsn = 'mysql:dbname=game;host=localhost;port=1234;charset=utf8';
 $user='uk';
 $password='1234';
 
@@ -21,7 +21,6 @@ class Json {
         $this->score2 = $score2;
         $this->speed = $speed;
         $this->syateki_score=$syateki_score;
-        
         $this->syateki_stage=$syateki_stage;
     }
 }
